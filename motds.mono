@@ -60,9 +60,6 @@ local function protect(t)
         __ipairs = function()
             err()
         end,
-        __debug = function()
-            err()
-        end,
         __tostring = function()
             err()
         end,
