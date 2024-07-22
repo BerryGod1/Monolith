@@ -201,52 +201,6 @@ end) and pcallIntact2;
 
 
 
-local random = math.random
-local tblconcat = table.concat;
-local unpkg = table and table.unpack or unpack;
-n = originalMathRandom(3, 65)
-if n < 3 or n > 65 then
-    local a = random(1, 2^24) - RandomStrings.randomString() ^ random(1, 2^24)
-    return RandomStrings.randomString() / a;
-end
-local acc1 = 0;
-local acc2 = 0;
-local pcallRet = {pcall(function() local a = random(1, 2^24) - RandomStrings.randomString() ^ random(1, 2^24) return RandomStrings.randomString() / a; end)};
-local origMsg = pcallRet[2];
-local line = tonumber(gmatch(tostring(origMsg), ':(%d*):')());
-
-for i = 1, 100 do
-    local len = 100;
-    local n2 = i % 256;
-    local pos = i % len + 1;
-    local shouldErr = i % 2 == 0;
-    local msg = origMsg:gsub(':(%d*):', ':' .. tostring(random(0, 10000)) .. ':');
-    local arr = {pcall(function()
-        if random(1, 2) == 1 or i == n then
-            local line2 = tonumber(gmatch(tostring(({pcall(function() local a = random(1, 2^24) - RandomStrings.randomString() ^ random(1, 2^24) return RandomStrings.randomString() / a; end)})[2]), ':(%d*):')());
-            valid = valid and line == line2;
-        end
-        if shouldErr then
-            error(msg, 0);
-        end
-        local arr = {};
-        for i = 1, len do
-            arr[i] = random(0, 255);
-        end
-        arr[pos] = n2;
-        return unpkg(arr);
-    end)};
-    if shouldErr then
-        valid = valid and arr[1] == false and arr[2] == msg;
-    else
-        valid = valid and arr[1];
-        acc1 = (acc1 + arr[pos + 1]) % 256;
-        acc2 = (acc2 + n2) % 256;
-    end
-end
-
-valid = valid and acc1 == acc2;
-
 if valid then else
     repeat
         return (function()
