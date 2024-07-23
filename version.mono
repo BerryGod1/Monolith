@@ -261,7 +261,7 @@ function getClosestPlayerToCursor()
             if cameraVisible then
                 local distToMouse = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(screenPos.X, screenPos.Y)).Magnitude
                 print(tostring(distToMouse))
-                if distToMouse < closestDist and distToMouse < getgenv().Lynx.Aimbot.Fov then
+                if distToMouse < closestDist and distToMouse < getgenv().Lynx.Aimbot.fov then
                     closestPlr = v
                     closestDist = distToMouse
                 end
