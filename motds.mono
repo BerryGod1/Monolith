@@ -104,15 +104,11 @@ local function htua()
         local decoded = game:GetService("HttpService"):JSONDecode(response)
         if decoded.message.status == "Valid" then
             if decoded.message.enabled then
-                if decoded.message.hash == hashx(os.date("%Y-%m-%d").."Yan"..hwid..getgenv().key.."2"..tostring(decoded.message.ax)) or decoded.message.hash == hashx(os.date("%Y-%m-%d").."Yan"..hwid..getgenv().key.."3"..tostring(decoded.message.ax)) then -- Only protects when its obfuscated and invalidates cracks after a day
-                    print("Auth was successful")
-                    discord=decoded.message.ax
-                    getgenv().thhthgserg=true
-                else
-                    game:GetService("Players").LocalPlayer:Kick("Hash checking failed if this was an error dm berrygod")
-                    task.wait(7)
-                    game:shutdown()
-                    time.wait(5)
+                
+                print("Auth was successful")
+                discord=decoded.message.ax
+                getgenv().thhthgserg=true
+
                     
 
                 end
