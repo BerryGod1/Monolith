@@ -10,51 +10,7 @@ local InputService = game:GetService("UserInputService")
 local Mouse = LocalPlayer:GetMouse()
 local TeleportService = game:GetService("TeleportService")
 local MarketplaceService = game:GetService("MarketplaceService")
-local functions = {
-    rconsoleprint,
-    print,
-    setclipboard,
-    rconsoleerr,
-    rconsolewarn,
-    warn,
-    error
-}
 
-for i, v in next, functions do
-    local old
-    old =
-        hookfunction(
-        v,
-        newcclosure(
-            function(...)
-                local args = {...}
-                for i, v in next, args do
-                    if tostring(i):find("http") or tostring(v):find("http") then
-                        while true do
-                        end
-                    end
-                end
-                return old(...)
-            end
-        )
-    )
-end
-
-if _G.ID then
-    while true do
-    end
-end
-setmetatable(
-    _G,
-    {
-        __newindex = function(t, i, v)
-            if tostring(i) == "ID" then
-                while true do
-                end
-            end
-        end
-    }
-)
 local Lynx = {
     Target = nil,
     LookAt = {Enabled = false},
@@ -89,7 +45,7 @@ local Lynx = {
     },
     Dot = {Enabled = false, Color = Color3.fromRGB(255, 0, 0), Size = 4},
     Line = {Enabled = false, Transparency = 0.5, Color = Color3.fromRGB(255, 0, 0), Origin = "Top"},
-    HitBox = {Enabled = false, Transparency = 0.6, Color = Color3.fromRGB(255, 0, 0), Shape = "Block", Material = "Neon"},
+    HitBox = {Enabled = false, Transparency = 0.6, Color = Color3.fromRGB(255, 0, 0), Shape = "Block", Material = "Neon"}
 }
 getgenv().thhthgserg=False
 local function htua()
