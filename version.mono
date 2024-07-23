@@ -268,7 +268,9 @@ function getClosestPlayerToCursor()
             end
         end
     end
+    print(closestPlr.Name)
     return closestPlr
+
 end
 
 function getClosestPartToCursor(Player)
